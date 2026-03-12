@@ -1,0 +1,70 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: radial-gradient(circle at bottom, #002b1f, #000);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* Background Animation */
+.sky { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+.stars {
+    width: 100%; height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: blink 4s infinite alternate;
+}
+.moon {
+    position: absolute; top: 40px; right: 60px;
+    width: 80px; height: 80px;
+    background: #fffde7; border-radius: 50%;
+    box-shadow: 0 0 40px #fffde7;
+}
+
+@keyframes blink { from { opacity: 0.4; } to { opacity: 0.9; } }
+
+/* Title & Content */
+.wrapper { z-index: 10; text-align: center; }
+.title { color: #fbbf24; font-size: 3.5rem; margin-bottom: 40px; text-shadow: 0 0 15px #fbbf24; }
+
+/* Envelope Styling */
+.envelope-area {
+    position: relative; width: 300px; height: 180px;
+    background: #064e3b; margin: 0 auto;
+    border-radius: 0 0 10px 10px; cursor: pointer; transition: 0.5s;
+}
+.envelope-area:before {
+    content: ""; position: absolute; top: -100px; left: 0;
+    border-left: 150px solid transparent; border-right: 150px solid transparent;
+    border-bottom: 100px solid #064e3b; transition: 0.5s; z-index: 5;
+}
+
+.letter-box {
+    position: absolute; bottom: 5px; left: 10px;
+    width: 280px; height: 160px; background: #fff;
+    border-radius: 5px; padding: 15px; color: #333;
+    transition: 0.6s; z-index: 2;
+}
+
+.envelope-area.open .letter-box { transform: translateY(-130px); height: 210px; }
+.envelope-area.open:before { transform: rotateX(180deg); transform-origin: bottom; z-index: 1; }
+
+.salami-btn {
+    background: #fbbf24; border: none; padding: 5px 15px;
+    border-radius: 20px; font-weight: bold; cursor: pointer; margin-top: 10px;
+}
+
+/* Modal */
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); display: none;
+    justify-content: center; align-items: center; z-index: 100;
+}
+.modal-card { background: #fff; padding: 30px; border-radius: 15px; text-align: center; }
+.modal-card button { display: block; width: 100%; margin: 10px 0; padding: 10px; background: #064e3b; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+
+.music-button { background: #fbbf24; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; margin-top: 20px; cursor: pointer; }
+.hint { color: #ccc; margin-top: 10px; font-size: 0.9rem; }
